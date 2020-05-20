@@ -201,23 +201,23 @@ def test(cfg,
         with open('results.json', 'w') as file:
             json.dump(jdict, file)
 
-        try:
-            from pycocotools.coco import COCO
-            from pycocotools.cocoeval import COCOeval
+#         try:
+#             from pycocotools.coco import COCO
+#             from pycocotools.cocoeval import COCOeval
 
-            # https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocoEvalDemo.ipynb
-            cocoGt = COCO(glob.glob('../coco/annotations/instances_val*.json')[0])  # initialize COCO ground truth api
-            cocoDt = cocoGt.loadRes('results.json')  # initialize COCO pred api
+#             # https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocoEvalDemo.ipynb
+#             cocoGt = COCO(glob.glob('../coco/annotations/instances_val*.json')[0])  # initialize COCO ground truth api
+#             cocoDt = cocoGt.loadRes('results.json')  # initialize COCO pred api
 
-            cocoEval = COCOeval(cocoGt, cocoDt, 'bbox')
-            cocoEval.params.imgIds = imgIds  # [:32]  # only evaluate these images
-            cocoEval.evaluate()
-            cocoEval.accumulate()
-            cocoEval.summarize()
-            # mf1, map = cocoEval.stats[:2]  # update to pycocotools results (mAP@0.5:0.95, mAP@0.5)
-        except:
-            print('WARNING: pycocotools must be installed with numpy==1.17 to run correctly. '
-                  'See https://github.com/cocodataset/cocoapi/issues/356')
+#             cocoEval = COCOeval(cocoGt, cocoDt, 'bbox')
+#             cocoEval.params.imgIds = imgIds  # [:32]  # only evaluate these images
+#             cocoEval.evaluate()
+#             cocoEval.accumulate()
+#             cocoEval.summarize()
+#             # mf1, map = cocoEval.stats[:2]  # update to pycocotools results (mAP@0.5:0.95, mAP@0.5)
+#         except:
+#             print('WARNING: pycocotools must be installed with numpy==1.17 to run correctly. '
+#                   'See https://github.com/cocodataset/cocoapi/issues/356')
 
     # Return results
     maps = np.zeros(nc) + map
