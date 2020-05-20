@@ -243,7 +243,7 @@ if __name__ == '__main__':
     opt = parser.parse_args()
     opt.save_json = opt.save_json or any([x in opt.data for x in ['coco.data', 'coco2014.data', 'coco2017.data']])
     opt.cfg = list(glob.iglob('./**/' + opt.cfg, recursive=True))[0]  # find file
-    opt.data = list(glob.iglob('./**/' + opt.data, recursive=True))[0]  # find file
+    #opt.data = list(glob.iglob('./**/' + opt.data, recursive=True))[0]  # find file
     print(opt)
 
     # task = 'test', 'study', 'benchmark'
